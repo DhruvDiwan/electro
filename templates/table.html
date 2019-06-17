@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Inventory</title>
+  </head>
+  <body>
+    <big>Item   - Count</big>
+    {% for obj in object_list %}
+    <p>{{ obj.item  }}
+    {{ obj.count }}</p>
+    {% endfor %}
+  </body>
+</html>
