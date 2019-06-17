@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    
+  	<meta name="description" content="The Electronics Society of IIIT-Delhi">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta http-equiv="X-Frame-Options" content="sameorigin">
+
+  	<!-- CSS -->
+    <!-- <link rel="stylesheet" href="{% static "css/main.css" %}"> -->
+    <link rel="stylesheet" href="/static/css/main.css">
+
+  	<!--Favicon-->
+  	<link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+  	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+  	<!-- Google Fonts -->
+
+  	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
+
+  </head>
+  <body>
+    <header class="site-header">
+  <div class="branding">
+        <a href="/">
+            <img class="club-logo" src="/static/img/club_logo.png" alt=""/>
+        </a>
+  </div>
+  <nav class="site-nav">
+    <ul>
+
+      <li>
+        <a class="page-link" href="/">
+          About Us
+        </a>
+      </li>
+
+      <li>
+        <a class="page-link" href="/sessions/">
+          Sessions
+        </a>
+      </li>
+
+      <!-- Social icons from Font Awesome, if enabled -->
+
+<li>
+  <a href="mailto:electroholics-admin@googlegroups.com" title="Email">
+    <i class="fa fa-fw fa-envelope"></i>
+  </a>
+</li>
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://www.facebook.com/iiitdelectroholics" title="Follow on Facebook">
+    <i class="fa fa-fw fa-facebook"></i>
+  </a>
+</li>
+
+<li>
+  <a href="https://github.com/Electroholics" title="Follow on GitHub">
+    <i class="fa fa-fw fa-github"></i>
+  </a>
+</li>
+
+            <li>
+                <a href="https://iiitd.ac.in">
+                    <img class="iiitd-logo" src="/static/img/iiitd_logo.png" alt=""/>
+                </a>
+            </li>
+    </ul>
+  </nav>
+</header>
+
+    {% block content %}
+    {% endblock content %}
+    <footer class="site-footer">
+    	<p class="text"> <a href="https://rohanchandra.github.io/project/type/">Type Theme</a>. Background from <a href="http://subtlepatterns.com">subtlepatterns.com</a>.
+    </p>
+    </footer>
+
+  </body>
+</html>

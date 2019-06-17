@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content">
+  <article >
+<header style="background-image: url('/')">
+<h1 class="title">An Alphabet Soup of Communication Protocols</h1>
+<p class="meta">
+January 30, 2016
+
+</p>
+</header>
+<section class="post-content"><p><em>By Radhika Ghosal</em></p>
+
+<p>Before you start reading, this is just to serve as an introduction to the
+TinkerEve we’ll be hosting on Wednesday on communication protocols (obviously),
+like SPI, I2C, and a few more if time permits.</p>
+
+<p>So, what is this beast called a ‘communication protocol’? Your USB drive, Ethernet cable,
+SD card, all use some communication protocol or the other to talk to your computer.</p>
+
+<p>Ever interfaced an LCD display with an Arduino? Well, the code for that on the
+Arduino IDE looks something like:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">// include the library code:
+</span><span class="cp">#include &lt;LiquidCrystal.h&gt;
+</span>
+<span class="c1">// initialize the library with the numbers of the interface pins
+</span><span class="n">LiquidCrystal</span> <span class="n">lcd</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// set up the LCD's number of columns and rows:
+</span>    <span class="n">lcd</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="c1">// Print a message to the LCD.
+</span>    <span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"hello, world!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>That’s rather cute. But in reality, the Arduino IDE does most of the heavy lifting
+for us and abstracts out the internal working of the LCD display. In fact, the actual
+code for writing to an LCD display in AVR C looks more like:</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// This is just a snippet of the entire program for writing to an LCD
+</span><span class="cp">#include &lt;avr/io.h&gt;
+#include &lt;util/delay.h&gt;
+</span>
+<span class="kt">void</span> <span class="nf">SendCommand</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">command</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="n">CheckIfBusy</span><span class="p">();</span>
+<span class="n">PORTB</span> <span class="o">=</span> <span class="n">command</span><span class="p">;</span>
+<span class="n">PORTD</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">((</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">));</span> <span class="c1">//turn off RS (command mode) and RW (write mode)
+</span>    <span class="n">BlinkLight</span><span class="p">();</span>
+<span class="n">DDRB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">SendCharacter</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">character</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="n">CheckIfBusy</span><span class="p">();</span>
+<span class="n">PORTB</span> <span class="o">=</span> <span class="n">character</span><span class="p">;</span>
+<span class="n">PORTD</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">7</span><span class="p">);</span> <span class="c1">//turn off RW (write mode)
+</span>    <span class="n">PORTD</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">);</span> <span class="c1">//turn on RS (character display mode)
+</span>    <span class="n">BlinkLight</span><span class="p">();</span>
+<span class="n">DDRB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>If you’re in the first year, and your Introduction to Engineering Design project
+involves pretty screens or lots of fancy sensors, we advise you to attend the session.
+We look forward to seeing you at our TinkerEve on Wednesday, 5:30PM, at C02.</p>
+</section>
+</article>
+
+<!-- Post navigation -->
+
+
+<!-- Disqus -->
+
+
+<!-- Muut -->
+
+</div>
+{% endblock content %}
