@@ -10,12 +10,19 @@
   <style>
     #table{
       position: relative;
-      left: 300px;
-      top: 50px;
+      left: 100px;
+      top: 90px;
     }
+    h2 {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-block-start: .83em;
+  margin-block-end: .83em;
+}
   </style>
   <div id = "table">
-    <h3>Item   - Count</h3>
+    <h2>Item   - Count</h2>
     {% for obj in object_list %}
     <li>{{ obj.item  }}  -
       {{ obj.count }}
