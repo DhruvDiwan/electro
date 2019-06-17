@@ -1,1 +1,1 @@
-web: gunicorn electro_project.wsgi --log-file 
+web: gunicorn electro_project.wsgi --log-file -
