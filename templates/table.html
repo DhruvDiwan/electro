@@ -1,14 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Inventory</title>
-  </head>
-  <body>
-    <big>Item   - Count</big>
+<head>
+  <meta charset="utf-8">
+  <title>Inventory</title>
+</head>
+<body>
+  <style>
+    #table{
+      position: relative;
+      left: 300px;
+      top: 50px;
+    }
+  </style>
+  <div id = "table">
+    <h3>Item   - Count</h3>
     {% for obj in object_list %}
-    <p>{{ obj.item  }}
-    {{ obj.count }}</p>
+    <li>{{ obj.item  }}  -
+      {{ obj.count }}
+    </li>
     {% endfor %}
-  </body>
+  </div>
+</body>
 </html>
+{% endblock content %}
